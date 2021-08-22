@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   def signup
     user_exists = User.exists?(email: params[:email])  
     if user_exists
-      puts 'Email in use if these are your details sign in or create a new account'
+    #   notice 'Email in use if these are your details sign in or create a new account'
     else
       @user = User.create(user_params)
       redirect_to signin_path
@@ -22,6 +22,26 @@ class UsersController < ApplicationController
   end
 
   def signin
+    @user = User.all
+    if @user.exists?(email: params[:email])
+        # notice 'User exists'
+      if @user.find_by(email: params[:email]).password == params[:password]
+        # notice 'Successful authentification'
+        session[:user_id] = @user.ids
+      end
+    else 
+    #   notice 'User doess not exist'
+    end
+  end
+
+  def logout_landing
+  end
+
+  def logout
+    if request.post?
+        session[:user_id] = nil
+        redirect_to root_path, notice: "You are signed out"   
+    end
   end
 
   def user_params

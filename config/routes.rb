@@ -6,4 +6,7 @@ Rails.application.routes.draw do
   root "users#signup_landing"
   post 'signup', to: "users#signup"
   get 'signin', to: 'users#signin_landing'
+  post 'signin', to: "users#signin"
+  get 'logout', to: "users#logout"
+  post 'logout', to: 'users#logout'
 end
