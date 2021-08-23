@@ -2,8 +2,14 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   # the db exists 
-  xit 'checks if the DB exists' 
-  
+  it 'checks if the DB exists' 
+
+  describe 'it checks for associations: ' do
+  it 'User has many recipes'
+  it 'User has many comments'
+  it 'User had many recommendations'
+  end
+
   describe 'test to see if email,name and password can not be saved if null' do
     it 'checks if null is name is valid' do
       user = User.new(name: '', email: 'eddy@yahoo.com', password: 'password').save

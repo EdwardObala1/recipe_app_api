@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2021_08_23_081304) do
     t.string "title"
     t.text "body"
     t.string "ingredients"
-    t.string "recommendations"
+    t.integer "recommendations"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
