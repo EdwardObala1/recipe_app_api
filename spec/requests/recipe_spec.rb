@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe "Recipe", type: :request do
-  describe "GET /recipe and GET /recipe/ID" do
+RSpec.describe "/recipes", type: :request do
+  describe "GET /recipes and GET /recipe/ID" do
     it "opens recipe list" do
-      # get recipe_path
+      get recipe_path
       # expect(response.status).to eq(204)
     end
     it "opens recipe page with specific ID"
