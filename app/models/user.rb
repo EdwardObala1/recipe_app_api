@@ -4,7 +4,7 @@ class User < ApplicationRecord
   
 #   taken out the :database_authenticatable method from devise as it stores the passsword after hashing it in a 
 # another columnn not password so I have to close the session then test this as true later
- 
+has_many :recipes
 devise  :registerable,
          :recoverable, :rememberable, :validatable
   validates :name, presence: true, length: {in: 5..20}
