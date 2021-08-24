@@ -19,9 +19,9 @@ RSpec.describe "/recipes", type: :request do
 
   describe 'functionality' do
     xit 'allows the user to add a recipe' do
-      count = Recipe.count
+      recipe_count = Recipe.count
       post add_recipe_path, :params => {recipe: {title: recipe.title, body: recipe.body, ingredients: recipe.ingredients}}
-      expect(Recipe.count).to eq(count + 1)
+      expect(Recipe.count).to eq(recipe_count + 1)
     end
     
     it 'checks for the get recipe' do
@@ -41,9 +41,9 @@ RSpec.describe "/recipes", type: :request do
   end
 
   describe 'User functionalities in recipe page' do
-    xit 'User adds recommendation' do
-      session[:user_id] = recipe.user_id
-      patch recommend_path, :params => {recipe: {id: recipe.id, user_id: recipe.user_id}}
+    it 'User adds recommendation' do
+      session[:user_id] = recipe.user
+      patch recommend_path, :params => {recipe: {id: recipe.id, user_id: recipe.user}}
       recommendation =  Recipe.find_by(id: recipe.id).recommendations
       expect(recommendation).to eq(recommendation + 1)
     end

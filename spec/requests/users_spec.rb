@@ -19,9 +19,9 @@ RSpec.describe "/users", type: :request do
       end
 
       it 'Sign up fails with no details' do
-        count = User.count 
+        user_count = User.count 
         post signup_path
-        expect(User.count).not_to eq(count+1)
+        expect(User.count).not_to eq(user_count+1)
       end
       
       it 'redirects to sign in when sign up is succcessful' do

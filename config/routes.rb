@@ -18,4 +18,10 @@ Rails.application.routes.draw do
   post 'edit_recipe',to: 'recipes#edit'
   post 'delete_recipe',to: 'recipes#delete'
   patch 'recommend', to: 'recipes#recommend'
+
+
+  resources :comments
+  post "post_comment", to: 'comments#add'
+  post "delete_comment", to: 'comments#delete'
+  get 'display_comments', to: 'comments#display'
 end
